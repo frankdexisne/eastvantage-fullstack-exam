@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Services\RoleService;
+use App\Http\Requests\RoleRequest;
 
-class RoleController extends Controller
+class RoleController extends BaseCrudController
 {
-    public function index(Request $request) {
-        $pageSize = $request->pageSize ?? 10;
-        return Role::whereHas('users')->with(['users'])->paginate($pageSize);   
+
+    public function __construct(RoleService $roleService){
+        $this->storeRequest = RoleRequest::class;
+        $this->updateRequest = RoleRequest::class;
+        $this->service = $roleService;
+        $this->modelQuery = Role::with(['users']);
     }
+
 }
