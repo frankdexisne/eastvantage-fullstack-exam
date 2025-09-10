@@ -64,36 +64,44 @@ If you prefer running the application without Laravel Sail, make sure you have t
     - **DB_PASSWORD** – Database password
     
 5. Start Application
+
+   - Run with Docker (If you decide to run this locally proceed to Run Locally)
+     
+      <sub>Bring up the Docker container (make sure Docker is running): </sub>
+
+      ```bash
+      ./vendor/bin/sail up -d
+      ```
+
+      - `-d` runs container in the background
+      - By default, the application is accessible at [http://localhost:8000](http://localhost:8000)
+      - If you set a custom port in .env (e.g APP_PORT=8080), open [http://localhost:8080](http://localhost:8080)
+
+   - Run Locally (If you decide to run with Docker, skip this)
+    
+      <sub>Run the application locally using Artisan</sub>
    
-   <sub>Bring up the Docker container (make sure Docker is running): </sub>
-
-   ```bash
-   ./vendor/bin/sail up -d
-   ```
-
-   - `-d` runs container in the background
-   - By default, the application is accessible at [http://localhost:8000](http://localhost:8000)
-   - If you set a custom port in .env (e.g APP_PORT=8080), open [http://localhost:8080](http://localhost:8080)
-  
-   <sub>Run the application locally using Artisan</sub>
-
-   ```bash
-   php artisan serve
-   ```
+      ```bash
+      php artisan serve
+      ```
 
 6. Run Migrations and Seeder
 
-   <sub>Run inside Sail:</sub>
+   - Run with Docker (If you decide to run this locally proceed to Run Locally)
+     
+      <sub>Run inside Sail:</sub>
+   
+      ```bash
+      ./vendor/bin/sail artisan migrate --seed
+      ```
 
-   ```bash
-   ./vendor/bin/sail artisan migrate --seed
-   ```
-
-   <sub>Run inside local MySQL Database:</sub>
-
-   ```bash
-   php artisan migrate --seed
-   ```
+   - Run Locally (If you decide to run with Docker, skip this)
+     
+      <sub>Run inside local MySQL Database:</sub>
+   
+      ```bash
+      php artisan migrate --seed
+      ```
 
 #### Notes
 
